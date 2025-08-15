@@ -20,7 +20,7 @@ def clean_text(text):
     text =re.sub(r'\w*\d\w*', '', text)
     return text
 
-st.set_page_config(page_title="📰 News Detector")
+st.set_page_config(page_title="News Detector",page_icon="📰")
 st.title("📰 Fake News Detector")
 
 user_input = st.text_area("Enter News Article:",value=st.session_state.get("text",""), height=300)
@@ -79,4 +79,5 @@ if st.sidebar.button("Demo Fake News"):
     "than a half-inch (1.3 centimeters) of rain fell Sept. 1, causing flooding and foot-deep mud, as the AP reported. The annual " \
     "gathering, which launched on a San Francisco beach in 1986, attracts nearly 80,000 artists, musicians and activists for a mix " \
     "of wilderness camping and avant-garde performances"
+
     st.rerun()
