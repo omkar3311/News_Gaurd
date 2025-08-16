@@ -2,7 +2,22 @@ import streamlit as st
 import re
 from joblib import load
 
-model = load("news_detector.joblib")
+st.sidebar.title("⚙️ **Model Settings**")
+st.sidebar.markdown("---")
+
+st.session_state["classifier"]=st.sidebar.selectbox("Choose Classifier",["LogisticRegression","DecisionTree","RandomForest","GradientBoosting"])
+st.sidebar.markdown("---")
+ch=st.sidebar.checkbox("**Explain Classifiers**")
+st.sidebar.markdown("---")
+
+if st.session_state["classifier"] == "LogisticRegression":
+    model = load("logistic+vectorization.joblib")
+elif st.session_state["classifier"] == "DecisionTree":
+    model = load("decision+vectorization.joblib")
+elif st.session_state["classifier"] == "RandomForest":
+    model = load("random+vectorization.joblib")
+elif st.session_state["classifier"] == "GradientBoosting":
+    model = load("gradient+vectorization.joblib")
 
 st.markdown("""
     <style>
@@ -22,6 +37,15 @@ def clean_text(text):
 
 st.set_page_config(page_title="News Detector",page_icon="📰")
 st.title("📰 Fake News Detector")
+if ch:
+    st.markdown("""
+    ### Model Explanations
+
+    - **Logistic Regression** → Like a weighted checklist . Adds up important factors and decides *Yes/No* with a probability.  
+    - **Decision Tree** → Like a flowchart . Answers step-by-step questions until it reaches a decision.  
+    - **Random Forest** → Like asking a group of friends . Many trees vote and the majority wins.  
+    - **Gradient Boosting** → Like learning from mistakes . Each step fixes errors from the last, getting smarter over time.  """)
+
 
 user_input = st.text_area("Enter News Article:",value=st.session_state.get("text",""), height=300)
 col1,col2=st.columns(2)
@@ -37,7 +61,7 @@ if butt:
         proba = model.predict_proba([clean])[0]
         st.metric("Detection Probability:", f"{proba[1]*100:.2f}%")
 
-st.sidebar.title("⚙️ Model Settings")
+
 if st.sidebar.button("Demo Real News"):
     st.session_state["text"]="MOSCOW (Reuters) - Russiaâ€™s former ambassador to " \
     "Washington, Sergei Kislyak, said on Saturday his conversations with former " \

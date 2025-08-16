@@ -1,15 +1,21 @@
-# Fake News Detection
+# Fake News Detection (NLP)
 
 > End-to-end project to train a text classifier for fake/real news and run an app for interactive predictions.
+
+## Problem Statement
+
+With the rapid growth of online news and social media, the spread of fake news has become a major global issue. Fake news can mislead people, create panic, influence public opinion, and even impact elections or financial markets. Distinguishing between real news and fabricated information manually is challenging due to the sheer volume of content being published every second.
+
+This project aims to build a machine learning–based Fake News Detection System that can automatically classify a given news article as real or fake. Using Natural Language Processing (NLP) techniques like text cleaning and TF-IDF vectorization, and applying machine learning classifiers such as Logistic Regression, Random Forest, Decision Trees, and Gradient Boosting, the system learns from labeled news datasets and achieves high accuracy in detecting misinformation.
 
 ##  Overview
 This repository contains:
 - **Datasets** (folder `Datasets/`) for training/evaluation.
-- **Notebooks** (folder `NoteBook/`) for exploration and experiments.
+- **Models PipeLine** (folder `models pipeline/`) Have 4 Trained Pipelined Models. 
+- **NoteBook** (folder `NoteBook/`) for exploration and experiments.
 - **Application** (`app.py`) to load the trained model and run an interactive UI or server for predictions.
 - **Saved model** (`news_detector.joblib`) produced after training.
 - **Dependencies** (`requirements.txt`).
-- **Training code** (`train.py`) to build a fake-news classifier.
 
 ## Model Performance 
 
@@ -33,16 +39,20 @@ From the classification report:
 
 ---
 
+### Result
+**App Link :** ["News-Gaurd"](https://news-gaurd.streamlit.app/)
+!["App Demo"](result.png)
+
 ## 📁 Repository Structure
 
 ```text
 Fake_News_Detection/
 ├─ Datasets/                 # Place/download datasets here (CSV/JSON, etc.)
+├─ Model Pipelines           # Save Pipelines in Joblib
 ├─ NoteBook/                 # Jupyter notebooks for EDA/experiments
 ├─ app.py                    # App entrypoint (Streamlit/Flask UI)
 ├─ news_detector.joblib      # Trained sklearn model (serialized via joblib)
 ├─ requirements.txt          # Python dependencies
-├─ train.py                  # Script to train the model
 └─ README.md
 ```
 
