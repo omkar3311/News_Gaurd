@@ -35,14 +35,16 @@ From the classification report:
 
 ## 📁 Repository Structure
 
+```text
 Fake_News_Detection/
-├─ Datasets/ # Place/download datasets here (CSV/JSON, etc.)
-├─ NoteBook/ # Jupyter notebooks for EDA/experiments
-├─ app.py # App entrypoint (Streamlit/Flask UI)
-├─ news_detector.joblib # Trained sklearn model (serialized via joblib)
-├─ requirements.txt # Python dependencies
-├─ train.py # Script to train the model
+├─ Datasets/                 # Place/download datasets here (CSV/JSON, etc.)
+├─ NoteBook/                 # Jupyter notebooks for EDA/experiments
+├─ app.py                    # App entrypoint (Streamlit/Flask UI)
+├─ news_detector.joblib      # Trained sklearn model (serialized via joblib)
+├─ requirements.txt          # Python dependencies
+├─ train.py                  # Script to train the model
 └─ README.md
+```
 
 ##  Approach (Typical Pipeline)
 1. **Ingest & Clean**: Load news text & labels (fake/real) from `Datasets/`.
