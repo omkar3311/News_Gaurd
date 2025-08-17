@@ -14,7 +14,7 @@ This repository contains:
 - **Models PipeLine** (folder `models pipeline/`) Have 4 Trained Pipelined Models. 
 - **NoteBook** (folder `NoteBook/`) for exploration and experiments.
 - **Application** (`app.py`) to load the trained model and run an interactive UI or server for predictions.
-- **Saved model** (`news_detector.joblib`) produced after training.
+- **Saved model** (folder `Joblib models`) produced after training.
 - **Dependencies** (`requirements.txt`).
 
 ## Model Performance 
