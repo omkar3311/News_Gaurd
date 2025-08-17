@@ -11,13 +11,13 @@ ch=st.sidebar.checkbox("**Explain Classifiers**")
 st.sidebar.markdown("---")
 
 if st.session_state["classifier"] == "LogisticRegression":
-    model = load("logistic+vectorization.joblib")
+    model = load("Joblib models/logistic+vectorization.joblib")
 elif st.session_state["classifier"] == "DecisionTree":
-    model = load("decision+vectorization.joblib")
+    model = load("Joblib models/decision+vectorization.joblib")
 elif st.session_state["classifier"] == "RandomForest":
-    model = load("random+vectorization.joblib")
+    model = load("Joblib models/random+vectorization.joblib")
 elif st.session_state["classifier"] == "GradientBoosting":
-    model = load("gradient+vectorization.joblib")
+    model = load("Joblib models/gradient+vectorization.joblib")
 
 st.markdown("""
     <style>
@@ -53,13 +53,16 @@ with col2:
     butt=st.button("Check")
 if butt:
         if not user_input.strip():
-            st.error("⚠️ Please enter some news text first.")
-        clean = clean_text(user_input)
-        prediction = model.predict([clean])[0]
-        result = "✅ Real News" if prediction == 1 else "❌ Fake News"
-        st.subheader(result)
-        proba = model.predict_proba([clean])[0]
-        st.metric("Detection Probability:", f"{proba[1]*100:.2f}%")
+            st.error("⚠️ Please Enter News Artical First.")
+        elif len(user_input) < 50:
+            st.toast("**Enter Artical Not News Heading Or Title**")
+        else:
+            clean = clean_text(user_input)
+            prediction = model.predict([clean])[0]
+            result = "✅ Real News" if prediction == 1 else "❌ Fake News"
+            st.subheader(result)
+            proba = model.predict_proba([clean])[0]
+            st.metric("Detection Probability:", f"{proba[1]*100:.2f}%")
 
 
 if st.sidebar.button("Demo Real News"):

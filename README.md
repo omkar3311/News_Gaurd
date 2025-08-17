@@ -49,6 +49,7 @@ From the classification report:
 Fake_News_Detection/
 ├─ Datasets/                 # Place/download datasets here (CSV/JSON, etc.)
 ├─ Model Pipelines           # Save Pipelines in Joblib
+├─ Joblib models             # Saved Joblib Models
 ├─ NoteBook/                 # Jupyter notebooks for EDA/experiments
 ├─ app.py                    # App entrypoint (Streamlit/Flask UI)
 ├─ news_detector.joblib      # Trained sklearn model (serialized via joblib)
